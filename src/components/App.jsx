@@ -1,16 +1,16 @@
+import PhoneBook from './PhoneBook/PhoneBook';
+import React from 'react';
+import { Route, Router, Switch } from 'react-router-dom';
+import { Navigation } from './Navigation/Navigation';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Router>
+      <div>
+         <Navigation />
+          <Route path="/contacts" component={PhoneBook} />
+     </div>
+    </Router>
+    
   );
 };
