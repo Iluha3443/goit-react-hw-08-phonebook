@@ -1,16 +1,19 @@
 import PhoneBook from './PhoneBook/PhoneBook';
 import React from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Navigation } from './Navigation/Navigation';
+import { Register } from './Register/Register';
 
 export const App = () => {
   return (
-    <Router>
-      <div>
-         <Navigation />
-          <Route path="/contacts" component={PhoneBook} />
-     </div>
-    </Router>
+     <>
+      <Navigation />
+      <Routes>
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<PhoneBook />} />
+        <Route path="/contacts" element={<PhoneBook />} />
+      </Routes>
+    </>
     
   );
 };

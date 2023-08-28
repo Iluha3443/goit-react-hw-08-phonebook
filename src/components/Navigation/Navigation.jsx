@@ -8,10 +8,10 @@ export const Navigation = () => {
               <Link to='/contacts'>Contacts</Link>
                 </li>
                  <li>
-              <Link to='/register'>Contacts</Link>
+              <Link to='/register'>Register</Link>
                 </li>
                  <li>
-              <Link to='/login'>Contacts</Link>
+              <Link to='/login'>Login</Link>
                 </li>
             </ul>
         </nav>

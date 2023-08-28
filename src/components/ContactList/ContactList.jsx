@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import css from './ContactList.module.css';
 import { useEffect } from 'react';
-import { deleteContact, fetchContacts } from '../redux/contacts-api';
 import { Spinner } from 'components/Spinner/Spinner';
 
 export const ContactList = () => {
@@ -11,9 +10,9 @@ export const ContactList = () => {
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   const filterContacts = () => contacts.filter(contact =>
     contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -28,7 +27,7 @@ export const ContactList = () => {
           <button
             className={css.btn}
             type="button"
-            onClick={() => dispatch(deleteContact(contact.id))}
+            // onClick={() => dispatch(deleteContact(contact.id))}
           >
             DELETE
           </button>

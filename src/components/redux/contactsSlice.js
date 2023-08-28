@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, deleteContact,addNewContact } from "./contacts-api";
+
 
 
 export const contactSlice = createSlice({
     name: "contacts",
     initialState: {
+        auth: {
+            user: { 'name': null, 'email': null },
+            isLoggedIn: false,
+            token: null
+        },
         contacts: {
             items: [],
             isLoading: false,
@@ -24,35 +29,7 @@ export const contactSlice = createSlice({
         },
     },
     extraReducers: {
-        [fetchContacts.pending]: (state, actions) => {
-            state.contacts.isLoading = true;
-        },
-        [fetchContacts.fulfilled]: (state, actions) => {
-            state.contacts.isLoading = false;
-            state.contacts.items = actions.payload;
-        },
-         [fetchContacts.rejected]: (state, actions) => {
-             state.contacts.isLoading = false;
-             state.contacts.error = actions.payload;
-        },
-         [deleteContact.pending]: (state, actions) => {
-            state.contacts.isLoading = true;
-        },
-          [deleteContact.fulfilled]: (state, actions) => {
-            state.contacts.isLoading = false;
-        },
-        [deleteContact.rejected]: (state, actions) => {
-            state.contacts.isLoading = false;
-        },
-         [addNewContact.pending]: (state, actions) => {
-            state.contacts.isLoading = true;
-        },
-         [addNewContact.fulfilled]: (state, actions) => {
-            state.contacts.isLoading = false;
-        },
-         [addNewContact.rejected]: (state, actions) => {
-            state.contacts.isLoading = false;
-        },
+         
     }
 });
 

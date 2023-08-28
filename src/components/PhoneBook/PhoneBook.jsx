@@ -3,7 +3,7 @@ import { ContactForm } from "../ContactForm/ContactForm";
 import { Filter } from "components/Filter/Filter";
 import { ContactList } from "components/ContactList/ContactList";
 import { useDispatch } from 'react-redux';
-import { addNewContact} from '../redux/contacts-api';
+
 
 const PhoneBook = () => {
     const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const PhoneBook = () => {
             phone: numberTel,
         }
 
-        dispatch(addNewContact(contact))
+        // dispatch(addNewContact(contact))
         evt.target.name.value = '';
         evt.target.number.value = '';
     }
