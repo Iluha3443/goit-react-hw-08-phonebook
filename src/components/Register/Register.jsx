@@ -1,5 +1,9 @@
+import { createNewUser } from "components/redux/redux-auth/auth-operation";
+import { useDispatch } from "react-redux";
+
 
 export const Register = () => {
+    const dispatch = useDispatch()
 
     function SubmitForm(e) {
         e.preventDefault();
@@ -7,9 +11,14 @@ export const Register = () => {
         if (form.nameUser.value === '' || form.email.value === '' || form.password.value === '') {
             alert("Please fill in all the fields")
         };
-        
-        console.log(form)
-    }
+        const newUser = {
+            name: form.nameUser.value,
+            email: form.email.value,
+            password: form.password.value
+        };
+        dispatch(createNewUser(newUser));
+        form.reset();
+    };
 
     return (
         <form onSubmit={SubmitForm} autoComplete="off" >
