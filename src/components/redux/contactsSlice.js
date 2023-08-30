@@ -20,6 +20,9 @@ export const contactSlice = createSlice({
         filter: ""
     },
     reducers: {
+        getUserContacts(state, actions) {
+            state.contacts.items = actions.payload
+        },
         handleSubmit(state, actions) {
             state.contacts.items.push(actions.payload)
         },
@@ -48,7 +51,6 @@ export const contactSlice = createSlice({
             state.contacts.isLoading = true;
         },
         [login.fulfilled](state, action) {
-            
              state.contacts.isLoading = false;
              state.auth.user = action.payload.user;
              state.auth.token = action.payload.token;
@@ -65,6 +67,7 @@ export const contactSlice = createSlice({
             state.auth.user = { 'name': null, 'email': null };
             state.auth.isLoggedIn = false;
             state.auth.token = null;
+            state.contacts.items = [];
         },
           [logOut.rejected](state, action) {
             state.contacts.error = true;
@@ -72,4 +75,4 @@ export const contactSlice = createSlice({
     }
 });
 
-export const { handleSubmit, deleteNumber, filteredContacts } = contactSlice.actions;
+export const { handleSubmit, deleteNumber, filteredContacts, getUserContacts } = contactSlice.actions;

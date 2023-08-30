@@ -3,7 +3,7 @@ import { ContactForm } from "../ContactForm/ContactForm";
 import { Filter } from "components/Filter/Filter";
 import { ContactList } from "components/ContactList/ContactList";
 import { useDispatch } from 'react-redux';
-
+import { CreatedNewContacts } from 'components/redux/contacts-api';
 
 const PhoneBook = () => {
     const dispatch = useDispatch();
@@ -13,12 +13,11 @@ const PhoneBook = () => {
         const nameContact = evt.target.name.value;
         const numberTel = evt.target.number.value;
         const contact = {
-            id: nanoid(),
             name: nameContact,
-            phone: numberTel,
+            number: numberTel,
         }
 
-        // dispatch(addNewContact(contact))
+        dispatch(CreatedNewContacts(contact))
         evt.target.name.value = '';
         evt.target.number.value = '';
     }
