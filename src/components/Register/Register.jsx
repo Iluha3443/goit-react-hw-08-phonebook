@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 
 export const Register = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     function SubmitForm(e) {
         e.preventDefault();

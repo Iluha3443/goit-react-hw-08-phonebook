@@ -5,7 +5,7 @@ import { getUserContacts,handleSubmit, deleteNumber } from "./contactsSlice";
 
 
 export const fetchUserContacts = createAsyncThunk(
-    "user/contacts", async (_,{dispatch}) => {
+    "user/contacts", async (_, { dispatch }) => {
         try {
             const { data } = await axios.get(`contacts`);
             dispatch(getUserContacts(data))
@@ -13,18 +13,26 @@ export const fetchUserContacts = createAsyncThunk(
             
         }
     }
-)
+);
+
 
 export const CreatedNewContacts = createAsyncThunk(
-    "user/contacts", async (contact,{dispatch}) => {
+    "user/contacts", async (contact, { dispatch, getState }) => {
         try {
-            const { data } = await axios.post(`/contacts`, contact);
-            dispatch(handleSubmit(data))
+            const token = getState().auth.token;
+            
+               const response = await axios.post(`/contacts`, contact, {
+                headers: {
+                    Authorization: `Bearer ${token}` 
+                }
+               });
+            
+            dispatch(handleSubmit(response.data))
         } catch {
             
         }
     }
-)
+);
 
 export const DeleteContactUser = createAsyncThunk(
     "user/contacts", async (id,{dispatch}) => {

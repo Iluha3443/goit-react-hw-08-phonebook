@@ -1,9 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios';
 
-
-
-
 axios.defaults.baseURL = `https://connections-api.herokuapp.com/`;
 
 export const token = {
@@ -39,7 +36,6 @@ export const logOut = createAsyncThunk("auth/logout", async () => {
     try {
         await axios.post(`users/logout`);
         token.unset();
-        
     } catch (error) {
         console.log(error)
     }

@@ -6,15 +6,15 @@ import { Spinner } from 'components/Spinner/Spinner';
 import { fetchUserContacts, DeleteContactUser } from 'components/redux/contacts-api';
 
 export const ContactList = () => {
-  const contacts = useSelector(state => state.contacts.items);
-  const isLoading = useSelector(state => state.contacts.isLoading)
-  const filter = useSelector(state => state.filter);
-  const getIsLoggedIn = useSelector(state => state.auth.isLoggedIn);
+   const contacts = useSelector(state => state.contacts.contacts.items);
+  const isLoading = useSelector(state => state.auth.isLoading); 
+  const filter = useSelector(state => state.contacts.filter);
+  const isLoggedIn = useSelector(state => state.auth.isLoggedIn); 
   const dispatch = useDispatch();
 
   useEffect(() => {  
-     getIsLoggedIn && dispatch(fetchUserContacts());
-}, [getIsLoggedIn, dispatch]);
+     isLoggedIn && dispatch(fetchUserContacts());
+}, [isLoggedIn, dispatch]);
 
 
   const filterContacts = () => contacts.filter(contact =>

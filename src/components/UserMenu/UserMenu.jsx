@@ -5,8 +5,8 @@ import { logOut } from "components/redux/redux-auth/auth-operation";
 
 
 export const UserMenu = () => {
-    const user = useSelector(state => state.auth.user);
-    const dispatch = useDispatch()
+    const user = useSelector(state => state.auth.auth.user);
+    const dispatch = useDispatch();
 
     return (
         <div className={css.email}>

@@ -1,25 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createNewUser } from "./redux-auth/auth-operation";
-import { login } from "./redux-auth/auth-operation";
-import { logOut } from "./redux-auth/auth-operation";
-
+import { fetchUserContacts,DeleteContactUser,CreatedNewContacts } from "./contacts-api";
 
 export const contactSlice = createSlice({
     name: "contacts",
     initialState: {
-        auth: {
-            user: { 'name': null, 'email': null },
-            isLoggedIn: false,
-            token: null
-        },
         contacts: {
             items: [],
-            isLoading: false,
-            error: null
+            isLoading:false,
         },
         filter: ""
     },
     reducers: {
+        emptyContactsBook(state, action) {
+            state.contacts.items = [];
+        },
         getUserContacts(state, actions) {
             state.contacts.items = actions.payload
         },
@@ -33,44 +27,37 @@ export const contactSlice = createSlice({
             state.filter = actions.payload
         },
     },
-    extraReducers: {
-        [createNewUser.pending](state, action) {
+     extraReducers: {
+         [fetchUserContacts.pending]: (state, actions) => {
+             console.log(actions)
             state.contacts.isLoading = true;
         },
-        [createNewUser.fulfilled](state, action) {
-              console.log(action)
+        [fetchUserContacts.fulfilled]: (state, actions) => {
+            state.contacts.isLoading = false;
+            state.contacts.items = actions.payload;
+        },
+         [fetchUserContacts.rejected]: (state, actions) => {
              state.contacts.isLoading = false;
-             state.auth.user = action.payload.user;
-             state.auth.token = action.payload.token;
-             state.auth.isLoggedIn = true;
+             state.contacts.error = actions.payload;
         },
-          [createNewUser.rejected](state, action) {
-            state.contacts.error = true;
-        },
-          [login.pending](state, action) {
+         [DeleteContactUser.pending]: (state, actions) => {
             state.contacts.isLoading = true;
         },
-        [login.fulfilled](state, action) {
-             state.contacts.isLoading = false;
-             state.auth.user = action.payload.user;
-             state.auth.token = action.payload.token;
-             state.auth.isLoggedIn = true;
+          [DeleteContactUser.fulfilled]: (state, actions) => {
+            state.contacts.isLoading = false;
         },
-          [login.rejected](state, action) {
-            state.contacts.error = true;
+        [DeleteContactUser.rejected]: (state, actions) => {
+            state.contacts.isLoading = false;
         },
-          [logOut.pending](state, action) {
+         [CreatedNewContacts.pending]: (state, actions) => {
             state.contacts.isLoading = true;
         },
-        [logOut.fulfilled](state, action) {
-             state.contacts.isLoading = false;
-            state.auth.user = { 'name': null, 'email': null };
-            state.auth.isLoggedIn = false;
-            state.auth.token = null;
-            state.contacts.items = [];
+         [CreatedNewContacts.fulfilled]: (state, actions) => {
+             console.log(actions)
+            state.contacts.isLoading = false;
         },
-          [logOut.rejected](state, action) {
-            state.contacts.error = true;
+         [CreatedNewContacts.rejected]: (state, actions) => {
+            state.contacts.isLoading = false;
         },
     }
 });
