@@ -10,8 +10,8 @@ export const Navigation = () => {
 
   return (
     <nav className={css.navList}>
-      <Link to="/">Home</Link>
-      {isLoggedIn && <Link to="/contacts">Contacts</Link>}
+      <Link className={css.home} to="/">Home</Link>
+      {isLoggedIn && <Link className={css.home} to="/contacts">Contacts</Link>}
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </nav>
   );

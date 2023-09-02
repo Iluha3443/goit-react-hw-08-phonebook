@@ -4,3 +4,15 @@
   padding: 15px;
   list-style: none;
 }
+
+.home {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.home:hover {
+  color: #007bff;
+}
