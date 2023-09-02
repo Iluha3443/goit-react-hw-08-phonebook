@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
+import css from "./AuthNav.module.css"
 
-export const AuthNav = () => {
+ export const AuthNav = () => {
     return (
-        <div>
+        <div className={css.navig}>
             <li>
                 <Link to='/register'>Register</Link>
             </li>
@@ -11,4 +12,4 @@ export const AuthNav = () => {
             </li>
         </div>
     )
-}
+ };

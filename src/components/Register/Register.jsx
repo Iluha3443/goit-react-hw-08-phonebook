@@ -21,7 +21,7 @@ export const Register = () => {
     };
     dispatch(createNewUser(newUser));
     form.reset();
-  }
+  };
 
   return (
     <form onSubmit={SubmitForm} autoComplete="off">

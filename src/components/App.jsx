@@ -11,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks';
 import { PrivateRoute } from './PrivateRoute/PrivateRoute';
 
+
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();

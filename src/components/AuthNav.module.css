@@ -1,0 +1,27 @@
+.navig {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.navig li {
+  margin-right: 20px;
+}
+
+.navig li:last-child {
+  margin-right: 0;
+}
+
+.navig a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navig a:hover {
+  color: #007bff;
+}

@@ -4,6 +4,7 @@ import { UserMenu } from 'components/UserMenu/UserMenu';
 import { AuthNav } from 'components/AuthNav';
 import { useSelector } from 'react-redux';
 
+
 export const Navigation = () => {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
