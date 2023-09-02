@@ -1,7 +1,6 @@
 import { createNewUser } from '../../redux/auth/auth-operation';
 import { useDispatch } from 'react-redux';
 import {
-  Box,
   FormControl,
   FormLabel,
   Input,

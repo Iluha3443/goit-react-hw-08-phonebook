@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux/es/hooks/useSelector';
-import css from './UserMenu.module.css';
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/auth-operation';
 import {
