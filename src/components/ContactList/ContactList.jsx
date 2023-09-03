@@ -25,8 +25,8 @@ export const ContactList = () => {
     <ul className={css.list}>
       {isLoading && <Spinner />}
       {filterContacts().map(contact => (
-        <li className={css.contact} key={contact.id}>
-          {contact.name}: {contact.phone}
+         <li className={css.contact} key={contact.id}>
+          {contact.name}: {contact.number}
           <button
             className={css.btn}
             type="button"
@@ -35,6 +35,7 @@ export const ContactList = () => {
             DELETE
           </button>
         </li>
+       
       ))}
     </ul>
   );

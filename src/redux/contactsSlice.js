@@ -52,7 +52,6 @@ export const contactSlice = createSlice({
             state.contacts.isLoading = true;
         },
          [CreatedNewContacts.fulfilled]: (state, actions) => {
-             console.log(actions)
             state.contacts.isLoading = false;
         },
          [CreatedNewContacts.rejected]: (state, actions) => {
