@@ -4,9 +4,14 @@ import { getUserContacts, handleSubmit, deleteNumber } from './contactsSlice';
 
 export const fetchUserContacts = createAsyncThunk(
   'user/contacts',
-  async (_, { dispatch }) => {
+  async (_, { dispatch, getState }) => {
     try {
-      const { data } = await axios.get(`contacts`);
+      const token = getState().auth.token;
+      const { data } = await axios.get(`contacts`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      });
       dispatch(getUserContacts(data));
     } catch {}
   }
